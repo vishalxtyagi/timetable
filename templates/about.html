@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="px-4 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+            <h1 class="text-xl font-semibold text-gray-900">About {{ teacher|title }}</h1>
+            <p class="mt-2 text-sm text-gray-700">Welcome to teacher load management system for PIET</p>
+        </div>
+        <div class="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
+            <a href="{{ url_for('main.substitute') }}"
+                class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Find substitute teachers
+            </a>
+            <a href="{{ url_for('auth.logout') }}"
+                class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                &nbsp;Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
+        <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6">
+                <div>
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Teacher Information</h3>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p>
+
+                </div>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+                <dl class="sm:divide-y sm:divide-gray-200">
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Full name</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ teacher|title }}</dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Department</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Applied Science & Humanities</dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Email address</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ teacher }}.ash@piet.co.in</dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">About</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Fugiat ipsum ipsum deserunt culpa
+                            aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip
+                            consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud
+                            pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+                    </div>
+                    <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Attachments</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                    <div class="w-0 flex-1 flex items-center">
+                                        <!-- Heroicon name: solid/paper-clip -->
+                                        <svg class="flex-shrink-0 h-5 w-5 text-gray-400"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        <span class="ml-2 flex-1 w-0 truncate"> resume.pdf </span>
+                                    </div>
+                                    <div class="ml-4 flex-shrink-0">
+                                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Download
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                    <div class="w-0 flex-1 flex items-center">
+                                        <!-- Heroicon name: solid/paper-clip -->
+                                        <svg class="flex-shrink-0 h-5 w-5 text-gray-400"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        <span class="ml-2 flex-1 w-0 truncate"> coverletter.pdf
+                                        </span>
+                                    </div>
+                                    <div class="ml-4 flex-shrink-0">
+                                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Download
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+
+        <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="flex h-full flex-col">
+            <header
+                class="relative z-40 flex flex-none items-center justify-between border-b border-gray-200 py-4 px-6">
+                <h1 class="text-lg font-semibold text-gray-900">
+                    <time datetime="2022-01">Timetable</time>
+                </h1>
+            </header>
+            <div class="flex flex-auto flex-col overflow-auto bg-white">
+                <div style="width: 165%" class="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
+                    <div class="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8">
+                        <div class="grid grid-cols-7 text-sm leading-6 text-gray-500 sm:hidden">
+                            <button type="button" class="flex flex-col items-center pt-2 pb-3">M <span
+                                    class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">10</span></button>
+                            <button type="button" class="flex flex-col items-center pt-2 pb-3">T <span
+                                    class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">11</span></button>
+                            <button type="button" class="flex flex-col items-center pt-2 pb-3">W <span
+                                    class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white">12</span></button>
+                            <button type="button" class="flex flex-col items-center pt-2 pb-3">T <span
+                                    class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">13</span></button>
+                            <button type="button" class="flex flex-col items-center pt-2 pb-3">F <span
+                                    class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">14</span></button>
+                            <button type="button" class="flex flex-col items-center pt-2 pb-3">S <span
+                                    class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">15</span></button>
+                            <button type="button" class="flex flex-col items-center pt-2 pb-3">S <span
+                                    class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900">16</span></button>
+                        </div>
+
+                        <div
+                            class="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-gray-100 text-sm leading-6 text-gray-500 sm:grid">
+                            <div class="col-end-1 w-14"></div>
+                            <div class="flex items-center justify-center py-3">
+                                <span>Mon <span
+                                        class="items-center justify-center font-semibold text-gray-900">10</span></span>
+                            </div>
+                            <div class="flex items-center justify-center py-3">
+                                <span>Tue <span
+                                        class="items-center justify-center font-semibold text-gray-900">11</span></span>
+                            </div>
+                            <div class="flex items-center justify-center py-3">
+                                <span class="flex items-baseline">Wed <span
+                                        class="ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white">12</span></span>
+                            </div>
+                            <div class="flex items-center justify-center py-3">
+                                <span>Thu <span
+                                        class="items-center justify-center font-semibold text-gray-900">13</span></span>
+                            </div>
+                            <div class="flex items-center justify-center py-3">
+                                <span>Fri <span
+                                        class="items-center justify-center font-semibold text-gray-900">14</span></span>
+                            </div>
+                            <div class="flex items-center justify-center py-3">
+                                <span>Sat <span
+                                        class="items-center justify-center font-semibold text-gray-900">15</span></span>
+                            </div>
+                            <div class="flex items-center justify-center py-3">
+                                <span>Sun <span
+                                        class="items-center justify-center font-semibold text-gray-900">16</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-auto">
+                        <div class="sticky left-0 z-10 w-14 flex-none bg-white ring-1 ring-gray-100"></div>
+                        <div class="grid flex-auto grid-cols-1 grid-rows-1">
+                            <!-- Horizontal lines -->
+                            <div class="col-start-1 col-end-2 row-start-1 grid divide-y divide-gray-100"
+                                style="grid-template-rows: repeat(18, minmax(3.5rem, 1fr))">
+                                <div class="row-end-1 h-7"></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        9AM</div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        10AM</div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        11AM</div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        12PM</div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        1PM</div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        2PM</div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        3PM</div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        4PM</div>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <div
+                                        class="sticky left-0 z-20 -mt-2.5 -ml-14 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                                        5PM</div>
+                                </div>
+                                <div></div>
+                            </div>
+
+                            <!-- Vertical lines -->
+                            <div
+                                class="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-gray-100 sm:grid sm:grid-cols-7">
+                                <div class="col-start-1 row-span-full"></div>
+                                <div class="col-start-2 row-span-full"></div>
+                                <div class="col-start-3 row-span-full"></div>
+                                <div class="col-start-4 row-span-full"></div>
+                                <div class="col-start-5 row-span-full"></div>
+                                <div class="col-start-6 row-span-full"></div>
+                                <div class="col-start-7 row-span-full"></div>
+                                <div class="col-start-8 row-span-full w-8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

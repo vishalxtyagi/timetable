@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50 {{ 'h-full' if h_full else '' }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable | PIET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+        integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="{{ 'h-full' if h_full else '' }}">
+
+    <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        {% block content %}{% endblock %}
+
+        {% if footer %}
+        <footer class="flex-shrink-0 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+            <nav class="flex justify-center space-x-4">
+                <a href="mailto:contact@piet.co.in"
+                    class="text-sm font-medium text-gray-500 hover:text-gray-600">Contact
+                    Support</a>
+                <span class="inline-block border-l border-gray-300" aria-hidden="true"></span>
+                <a href="javascript:void(0);" class="text-sm font-medium text-gray-500 hover:text-gray-600">Status</a>
+                <span class="inline-block border-l border-gray-300" aria-hidden="true"></span>
+                <a href="https://github.com/vishalxtyagi"
+                    class="text-sm font-medium text-gray-500 hover:text-gray-600">Github</a>
+            </nav>
+        </footer>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
