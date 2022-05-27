@@ -20,30 +20,35 @@ def get_recommendations(day_name, lecture, subject):
             list_of_csv = list(csv_reader)
             for row in list_of_csv:
                 Teachers.append(row)
+                print(row)
     elif day_name == 'tuesday':
         with open(os.path.join(base_dir, 'dataset', 'tuesday.csv'), 'r') as read_obj:
             csv_reader = csv.reader(read_obj)
             list_of_csv = list(csv_reader)
             for row in list_of_csv:
                 Teachers.append(row)
+                print(row)
     elif day_name == 'wednesday':
         with open(os.path.join(base_dir, 'dataset', 'wednesday.csv'), 'r') as read_obj:
             csv_reader = csv.reader(read_obj)
             list_of_csv = list(csv_reader)
             for row in list_of_csv:
                 Teachers.append(row)
+                print(row)
     elif day_name == 'thursday':
         with open(os.path.join(base_dir, 'dataset', 'thursday.csv'), 'r') as read_obj:
             csv_reader = csv.reader(read_obj)
             list_of_csv = list(csv_reader)
             for row in list_of_csv:
                 Teachers.append(row)
+                print(row)
     elif day_name == 'friday':
         with open(os.path.join(base_dir, 'dataset', 'friday.csv'), 'r') as read_obj:
             csv_reader = csv.reader(read_obj)
             list_of_csv = list(csv_reader)
             for row in list_of_csv:
                 Teachers.append(row)
+                print(row)
     
     possible_sub = {}
     no_class = []
@@ -100,7 +105,7 @@ def get_recommendations(day_name, lecture, subject):
             if no_class[i] == suited_teacher:
                 result.append(key)  # prints the teacher to that index
 
-    return result
+    return result, possible_sub
 
 @main.route('/')
 @login_required
@@ -124,9 +129,11 @@ def substitute():
     lecture = request.form.get('lecture')
     subject = request.form.get('subject')
     day = request.form.get('day')
+    recommend,pos = get_recommendations(day,lecture,subject)
     return render_template(
         'result.html',
-        results=get_recommendations(day,lecture,subject)
+        results=recommend,
+        poss=pos
     )
 
 
