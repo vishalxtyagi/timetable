@@ -19,7 +19,7 @@ class Schedule:
         schedules = dict()
         for file in self.dataset_files:
             teacher_name = self.get_file_name_without_ext(file)
-            schedules[teacher_name] = pd.read_csv(file).to_dict('records')
+            schedules[teacher_name] = pd.read_csv(file).to_dict('list')
         return schedules
             
     def get_all_teachers(self):
@@ -27,39 +27,45 @@ class Schedule:
         return all_teachers
     
 
-class Adjust:
+class Adjuster:
     
     def __init__(self) -> None:
         schedule = Schedule()
-        self.teaches_schedule = schedule.get_all_teachers_schedule()
+        self.teachers_schedule = schedule.get_all_teachers_schedule()
+        self.possible_substitutes = []
+        self.no_class = []
         
-    def adjust(self, lecture):
-        print(self.teaches_schedule)
+    def adjust(self, teacher_name, lecture, day):
+        self.first_preference(lecture)
+        self.second_preference(lecture)
+        recommendations = self.get_recommendations()
+        return recommendations
     
+    def first_preference(self, lecture):
+        for ts in self.teachers_schedule:
+            count = 0
+            if ts[lecture] != 1 and ts[lecture-1] != 1 and ts[lecture+1] != 1:  # looks for the possible substitutes
+                self.possible_substitutes.append(ts[0])
+                for j in ts:                 # counts the total number of free periods
+                    if j == 0:
+                        count += 1
+                self.no_class.append(count)
     
-    # def first_preference(slef):
-    #     for i in teachers:
-    #     count = 0
-    #     if i[ab_lect] != 1 and i[ab_lect-1] != 1 and i[ab_lect+1] != 1:             # looks for the possible substitutes
-    #         possible_sub.append(i[0])
-    #         for j in i:                 # counts the total number of free periods
-    #             if j == 0:
-    #                 count += 1
-    #         no_class.append(count)
+    def second_preference(self, lecture):
+        if self.possible_substitutes == []:
+            for ts in self.teachers_schedule:
+                count = 0
+                if ts[lecture] == 0:
+                    self.possible_substitutes.append(ts[0])
+                    for j in ts:
+                        if j == 0:
+                            count += 1
+                    self.no_class.append(count)
     
-    # def second_preference(slef):
-    #     if possible_sub == []:
-    #     for i in teachers:
-    #         count = 0
-    #         if i[ab_lect] == 0:
-    #             possible_sub.append(i[0])
-    #             for j in i:
-    #                 if j == 0:
-    #                     count += 1
-    #             no_class.append(count)
-    
-    # def get_recommendations(self):
-    #     suited_teacher = max(self.no_class)  # gives the teacher with the most number of free time
-    #     for i in range(len(no_class)):
-    #         if no_class[i] == suited_teacher:
-    #             print(possible_sub[i])  # prints the teacher to that index
+    def get_recommendations(self):
+        recommended = []
+        suited_teacher = max(self.no_class)  # gives the teacher with the most number of free time
+        for i in range(len(self.no_class)):
+            if self.no_class[i] == suited_teacher:
+                recommended.append(self.possible_substitutes[i])  # appends the teacher to that index
+        return recommended

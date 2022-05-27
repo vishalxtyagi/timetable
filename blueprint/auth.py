@@ -47,7 +47,6 @@ def signup():
     password = request.form.get('password')
     agreed = True if request.form.get('agreed') else False
     
-    print(agreed)
     if not agreed: # if user doesn't agree the terms, we want to redirect back to signup page so user can try again
         flash('You must agree to the privacy policy.')
         flash('You must agree to the terms & conditions')
