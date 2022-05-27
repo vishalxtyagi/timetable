@@ -50,7 +50,7 @@ def get_recommendations(day_name, lecture, subject):
     sub_possible_sub = []
     sub_no_class = []
 
-    ab_lect = lecture
+    ab_lect = int(lecture)
     subject = subject.lower()
 
 
